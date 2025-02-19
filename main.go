@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
 	"go/ast"
 	"go/format"
@@ -75,7 +76,18 @@ func Parse(content string, tagName string) error {
 		return err
 	}
 	addTags(a, tagName)
-	return format.Node(os.Stdout, fst, a)
+	buf := bytes.NewBuffer(nil)
+	err = format.Node(buf, fst, a)
+	if err != nil {
+		return err
+	}
+	out := buf.String()
+	idx := strings.Index(out, "type")
+	if idx != -1 {
+		out = out[idx:]
+	}
+	fmt.Print(out)
+	return nil
 }
 
 func main() {
