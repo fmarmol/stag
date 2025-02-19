@@ -1,0 +1,8 @@
+package stdin
+
+
+type Toto struct {
+	// comment A
+	A int `db1:"a" db2:"b"`
+	B float32 // comment B
+}
