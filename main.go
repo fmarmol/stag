@@ -12,16 +12,16 @@ import (
 	"strings"
 )
 
-func toSnakeCase(s string) string {
-	var result strings.Builder
-	for i, r := range s {
-		if i > 0 && 'A' <= r && r <= 'Z' {
-			result.WriteRune('_')
-		}
-		result.WriteRune(r)
-	}
-	return strings.ToLower(result.String())
-}
+// func toSnakeCase(s string) string {
+// 	var result strings.Builder
+// 	for i, r := range s {
+// 		if i > 0 && 'A' <= r && r <= 'Z' {
+// 			result.WriteRune('_')
+// 		}
+// 		result.WriteRune(r)
+// 	}
+// 	return strings.ToLower(result.String())
+// }
 
 func generateTag(fieldName, newTag string, existingTag string) string {
 	if existingTag != "" {
